@@ -45,11 +45,4 @@ public class CustomerController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/{id}/accounts-state")
-    public ResponseEntity<String> getAccountsState(@PathVariable("id") Long id,
-                                                   @RequestParam(value = "from") @DateTimeFormat(pattern = "yyyy-MM-dd") Date from,
-                                                   @RequestParam(value = "to") @DateTimeFormat(pattern = "yyyy-MM-dd")  Date to) {
-        customerService.getAccountsState(id, from, to);
-        return ResponseEntity.ok().body("hola");
-    }
 }

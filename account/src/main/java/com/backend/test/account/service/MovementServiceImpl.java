@@ -39,8 +39,8 @@ public class MovementServiceImpl implements MovementService {
     public MovementResponseDto save(MovementRequestDto movement) {
         Account account = getAccount(movement);
         Movement newMovement = movementMapper.toEntity(movement);
-        newMovement.setDate(new Date());
-        newMovement.setBalance(account.getBalance() + movement.getAmount());
+        newMovement.setDate(movement.getDate());
+        newMovement.setBalance(movement.getBalance());
         newMovement.setAccount(account);
         return movementMapper.toResponseDto(movementRepository.save(newMovement));
     }

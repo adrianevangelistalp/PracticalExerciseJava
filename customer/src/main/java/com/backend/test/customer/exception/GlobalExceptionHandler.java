@@ -25,6 +25,18 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(ReportNotFoundException.class)
+    public ResponseEntity<ErrorMessage> validationException (ReportNotFoundException ex, WebRequest request) {
+        ErrorMessage message = buildError(ex, request);
+        return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ReportAlreadyExistsException.class)
+    public ResponseEntity<ErrorMessage> validationException (ReportAlreadyExistsException ex, WebRequest request) {
+        ErrorMessage message = buildError(ex, request);
+        return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+    }
+
     // global exceptions
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorMessage> handleGlobalException(Exception exception,

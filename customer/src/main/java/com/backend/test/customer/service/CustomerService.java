@@ -19,5 +19,4 @@ public interface CustomerService {
     public void delete(Long id);
 
 
-    void getAccountsState(Long id, Date from, Date to);
 }

@@ -8,6 +8,7 @@ import com.backend.test.account.repository.MovementRepository;
 import com.backend.test.account.repository.ReportRepository;
 import com.backend.test.account.service.mapping.AccountMapper;
 import com.backend.test.account.service.mapping.MovementMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,8 @@ public class ReportServiceImpl implements ReportService{
             report.setCustomerId(id);
             report.setFrom(dateFrom);
             report.setTo(dateTo);
-            report.setDetail(accountsState.toString());
+            ObjectMapper objectMapper = new ObjectMapper();
+            report.setDetail(objectMapper.writeValueAsString(accountsState));
             reportRepository.save(report);
         } catch (Exception e) {
             e.printStackTrace();

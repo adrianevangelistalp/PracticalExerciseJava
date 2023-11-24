@@ -16,6 +16,7 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -76,6 +77,8 @@ public class AccountServiceImpl implements AccountService{
         newMovement.setAccountId(id);
         newMovement.setAmount(accountMovementRequestDto.getAmount());
         newMovement.setType(accountMovementRequestDto.getType());
+        newMovement.setBalance(account.getBalance());
+        newMovement.setDate(new Date());
         movementService.save(newMovement);
         return accountMapper.toMovementResponseDto(account);
     }

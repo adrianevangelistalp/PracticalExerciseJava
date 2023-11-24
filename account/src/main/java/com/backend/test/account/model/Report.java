@@ -21,5 +21,6 @@ public class Report {
     private Date from;
     @Column(name = "to_date")
     private Date to;
+    @Column(columnDefinition = "text")
     private String detail;
 }

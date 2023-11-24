@@ -24,6 +24,4 @@ public class Account {
     @Column(nullable = false)
     private String state;
 
-    //@OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    //private List<Movement> movements;  //todo: confirmar que tengo que sacar cuando termine todo
 }
