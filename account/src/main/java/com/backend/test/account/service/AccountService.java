@@ -21,4 +21,6 @@ public interface AccountService {
     public void delete(Long id);
 
     public AccountMovementResponseDto registerMovement(Long id, AccountMovementRequestDto accountMovementRequestDto);
+
+    public List<AccountResponseDto> findByCustomerId(Long id);
 }

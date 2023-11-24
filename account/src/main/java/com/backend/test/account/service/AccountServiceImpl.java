@@ -84,4 +84,9 @@ public class AccountServiceImpl implements AccountService{
         return accountRepository.findById(id).orElseThrow(() -> new AccountNotFoundException("Account not found"));
     }
 
+    @Override
+    public List<AccountResponseDto> findByCustomerId(Long id) {
+        return accountMapper.toResponseDto(accountRepository.findByCustomerId(id));
+    }
+
 }

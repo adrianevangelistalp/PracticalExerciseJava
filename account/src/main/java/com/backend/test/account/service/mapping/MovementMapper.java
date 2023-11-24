@@ -14,4 +14,5 @@ public interface MovementMapper {
     MovementResponseDto toResponseDto(Movement movement);
 
     Movement toEntity(MovementRequestDto movement);
+
 }

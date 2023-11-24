@@ -1,0 +1,24 @@
+version: '3.2'
+
+services:
+   rabbitmq:
+      image: rabbitmq:3.10-management-alpine
+      container_name: rabbitmq
+      ports:
+       - "5672:5672"
+       - "15672:15672"
+   db:
+      image: mysql:8.0.32
+      container_name: mysqldb
+      restart: always
+      ports:
+       - '6604:3306'
+      environment:
+        MYSQL_ROOT_PASSWORD: test
+        MYSQL_DATABASE: test
+      #volumes:
+      #  - db_mutual:/var/lib/mysql
+      #  - ./bkmtadmin.sql:/bkmtadmin.sql        
+#volumes:
+#  db_data:        
+  

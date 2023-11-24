@@ -71,4 +71,9 @@ public class MovementServiceImpl implements MovementService {
         movementRepository.deleteById(id);
     }
 
+    @Override
+    public List<MovementResponseDto> findByAccountIdAndDateBetween(Long id, Date dateFrom, Date dateTo) {
+        return movementMapper.toResponseDto(movementRepository.findByAccountIdAndDateBetween(id, dateFrom, dateTo));
+    }
+
 }

@@ -3,13 +3,18 @@ package com.backend.test.customer.service;
 import com.backend.test.customer.dto.request.CustomerRequestDto;
 import com.backend.test.customer.dto.response.CustomerResponseDto;
 import com.backend.test.customer.exception.CustomerNotFoundException;
+import com.backend.test.customer.messaging.publisher.RabbitMQProducer;
 import com.backend.test.customer.model.Customer;
+import com.backend.test.customer.model.messages.AccountStateRequestMessage;
 import com.backend.test.customer.repository.CustomerRepository;
 import com.backend.test.customer.service.mapping.CustomerMapper;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -18,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
-
+    private final RabbitMQProducer rabbitMQProducer;
     @Override
     public List<CustomerResponseDto> findAll() {
         return customerMapper.toResponseDto(customerRepository.findAll());
@@ -59,5 +64,13 @@ public class CustomerServiceImpl implements CustomerService {
     public void delete(Long id) {
         getCustomerById(id);
         customerRepository.deleteById(id);
+    }
+
+    @Override
+    public void getAccountsState(Long id, Date from, Date to) {
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+        AccountStateRequestMessage accountStateRequestMessage = new AccountStateRequestMessage(id,formatter.format(from),formatter.format(to));
+        rabbitMQProducer.send(accountStateRequestMessage);
     }
 }

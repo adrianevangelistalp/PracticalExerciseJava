@@ -1,1 +1,1 @@
-# PracticalExerciseJava
+# PracticalExerciseJavaeWS
