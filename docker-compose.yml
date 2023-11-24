@@ -1,9 +1,49 @@
-version: '3.2'
+version: '3.8'
 
 services:
+   customer:
+      build: ./customer
+      container_name: customer
+      ports:
+       - "8080:8080"
+      environment:
+        MYSQL_HOST: db
+        MYSQL_PORT: 3306
+        MYSQL_USER: root
+        MYSQL_PASSWORD: test 
+        RABBITMQ_HOST: rabbitmq
+        RABBITMQ_PORT: 5672
+      depends_on:
+        rabbitmq:
+           condition: service_healthy
+        db:
+           condition: service_healthy     
+   account:
+      build: ./account
+      container_name: account
+      ports:
+       - "8081:8081"
+      environment:
+        MYSQL_HOST: db
+        MYSQL_PORT: 3306
+        MYSQL_USER: root
+        MYSQL_PASSWORD: test 
+        RABBITMQ_HOST: rabbitmq
+        RABBITMQ_PORT: 5672
+      depends_on:
+        rabbitmq:
+           condition: service_healthy
+        db:
+           condition: service_healthy     
    rabbitmq:
       image: rabbitmq:3.10-management-alpine
       container_name: rabbitmq
+      restart: always
+      healthcheck:
+        test: rabbitmq-diagnostics -q status && rabbitmq-diagnostics -q check_local_alarms
+        interval: 30s
+        timeout: 30s
+        retries: 3      
       ports:
        - "5672:5672"
        - "15672:15672"
@@ -11,14 +51,16 @@ services:
       image: mysql:8.0.32
       container_name: mysqldb
       restart: always
+      healthcheck:
+        test: "mysql $$MYSQL_DATABASE -u$$MYSQL_ROOR_USER -p$$MYSQL_ROOT_PASSWORD -e 'SELECT 1;'"
+        interval: 20s
+        timeout: 10s
+        retries: 5      
       ports:
-       - '6604:3306'
+       - '3306:3306'
       environment:
+        MYSQL_ROOR_USER: root
         MYSQL_ROOT_PASSWORD: test
         MYSQL_DATABASE: test
-      #volumes:
-      #  - db_mutual:/var/lib/mysql
-      #  - ./bkmtadmin.sql:/bkmtadmin.sql        
-#volumes:
-#  db_data:        
+   
   
