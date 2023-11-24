@@ -1,0 +1,38 @@
+account/.gradle
+account/bin/
+account/build/
+!account/gradle/wrapper/gradle-wrapper.jar
+
+customer/.gradle
+customer/bin/
+customer/build/
+!customer/gradle/wrapper/gradle-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+
+/log/
+*.log
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+api.log.*.gz
