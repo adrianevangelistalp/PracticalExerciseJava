@@ -7,7 +7,5 @@ import java.util.Date;
 @Data
 public class AccountMovementResponseDto {
     private Long id;
-    private Long customerId;
-    private String number;
     private Double balance;
 }
