@@ -2,7 +2,6 @@ package com.backend.test.customer.service;
 
 import com.backend.test.customer.dto.response.ReportResponseDto;
 import com.backend.test.customer.exception.ReportNotFoundException;
-import com.backend.test.customer.messaging.publisher.RabbitMQProducer;
 import com.backend.test.customer.model.messages.AccountStateRequestMessage;
 import com.backend.test.customer.repository.ReportRepository;
 import com.backend.test.customer.service.mapping.ReportMapper;

@@ -4,14 +4,11 @@ import com.backend.test.customer.dto.request.CustomerRequestDto;
 import com.backend.test.customer.dto.response.CustomerResponseDto;
 import com.backend.test.customer.service.CustomerService;
 import lombok.AllArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -33,7 +30,7 @@ public class CustomerController {
 
     @PostMapping
     public ResponseEntity<CustomerResponseDto> save(@RequestBody CustomerRequestDto customerRequestDto) {
-        return new ResponseEntity(customerService.save(customerRequestDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(customerService.save(customerRequestDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

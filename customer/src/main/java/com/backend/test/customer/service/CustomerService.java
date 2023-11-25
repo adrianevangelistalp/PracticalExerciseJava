@@ -3,7 +3,6 @@ package com.backend.test.customer.service;
 import com.backend.test.customer.dto.request.CustomerRequestDto;
 import com.backend.test.customer.dto.response.CustomerResponseDto;
 
-import java.util.Date;
 import java.util.List;
 
 public interface CustomerService {

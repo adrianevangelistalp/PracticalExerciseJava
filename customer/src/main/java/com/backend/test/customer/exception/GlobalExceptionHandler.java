@@ -22,27 +22,27 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(CustomerNotFoundException.class)
     public ResponseEntity<ErrorMessage> validationException (CustomerNotFoundException ex, WebRequest request) {
         ErrorMessage message = buildError(ex, request);
-        return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ReportNotFoundException.class)
     public ResponseEntity<ErrorMessage> validationException (ReportNotFoundException ex, WebRequest request) {
         ErrorMessage message = buildError(ex, request);
-        return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ReportAlreadyExistsException.class)
     public ResponseEntity<ErrorMessage> validationException (ReportAlreadyExistsException ex, WebRequest request) {
         ErrorMessage message = buildError(ex, request);
-        return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 
     // global exceptions
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorMessage> handleGlobalException(Exception exception,
                                                               WebRequest webRequest){
-        ErrorMessage ErrorMessage = buildError(exception, webRequest);
-        return new ResponseEntity<>(ErrorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        ErrorMessage errorMessage = buildError(exception, webRequest);
+        return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     private static ErrorMessage buildError(Exception exception, WebRequest webRequest) {
@@ -56,7 +56,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   HttpStatusCode status,
                                                                   WebRequest request) {
         Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) ->{
+        ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError)error).getField();
             String message = error.getDefaultMessage();
             errors.put(fieldName, message);
