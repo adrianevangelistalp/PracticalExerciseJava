@@ -1,4 +1,4 @@
-package com.backend.test.account.dto.request;
+package com.backend.test.account.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -6,7 +6,8 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class MovementRequestDto {
+public class MovementCompleteResponseDto {
+    private Long id;
     private Long accountId;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date date;

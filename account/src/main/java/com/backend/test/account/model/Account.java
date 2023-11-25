@@ -15,8 +15,6 @@ public class Account {
     private Long id;
     @Column(nullable = false)
     private Long customerId;
-    @Column(nullable = false, unique=true)
-    private String number;
     @Column(nullable = false)
     private String type;
     @Column(nullable = false)

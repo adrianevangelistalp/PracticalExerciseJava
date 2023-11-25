@@ -4,6 +4,7 @@ services:
    customer:
       build: ./customer
       container_name: customer
+      restart: always
       ports:
        - "8080:8080"
       environment:
@@ -21,6 +22,7 @@ services:
    account:
       build: ./account
       container_name: account
+      restart: always
       ports:
        - "8081:8081"
       environment:

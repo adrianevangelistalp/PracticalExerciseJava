@@ -6,7 +6,6 @@ import lombok.Data;
 public class AccountResponseDto {
     private Long id;
     private Long customerId;
-    private String number;
     private String type;
     private Double balance;
     private String state;

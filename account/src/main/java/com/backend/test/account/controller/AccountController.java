@@ -7,6 +7,7 @@ import com.backend.test.account.dto.response.AccountMovementResponseDto;
 import com.backend.test.account.dto.response.AccountResponseDto;
 import com.backend.test.account.service.AccountService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class AccountController {
 
     @PostMapping
     public ResponseEntity<AccountResponseDto> save(@RequestBody AccountRequestDto accountRequestDto) {
-        return ResponseEntity.ok().body(accountService.save(accountRequestDto));
+        return new ResponseEntity(accountService.save(accountRequestDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

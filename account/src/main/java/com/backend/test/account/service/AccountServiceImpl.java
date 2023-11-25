@@ -50,7 +50,6 @@ public class AccountServiceImpl implements AccountService{
     @Transactional
     public AccountResponseDto update(Long id, AccountUpdateRequestDto account) {
         Account accountToUpdate = getAccountById(id);
-        accountToUpdate.setNumber(account.getNumber());
         accountToUpdate.setType(account.getType());
         accountToUpdate.setCustomerId(account.getCustomerId());
         accountToUpdate.setState(account.getState());
