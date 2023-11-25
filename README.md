@@ -49,7 +49,9 @@ De la información resultante se puede obtener el id de reporte, con el cual se 
     GET /reports/{reportId}/detail
 
 **F5**: Se implemento una prueba unitaria para la clase CustomerService
+
 **F6**: Se implemento una prueba de integrácion para probar la funcionalidad de registro de movimientos (F2-F3). Se encuentra en el microservicio ***Account***: *AccountIntegrationTest.java*
+
 **F7**: Se creo un docker compose para el despliegue completo de los contenedores (incluye los servicios de Mysql y RabbitMQ)
 
 ### Detalles de la entrega:
