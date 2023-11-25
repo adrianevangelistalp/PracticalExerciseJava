@@ -10,7 +10,8 @@ import java.util.Date;
 @Table(name = "movement")
 public class Movement {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO,
+            generator="native")
     @Column(nullable = false)
     private Long id;
     @ManyToOne
@@ -18,7 +19,7 @@ public class Movement {
     private Account account;
     @Column(nullable = false)
     private Date date;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String type;
     @Column(nullable = false)
     private Double amount;

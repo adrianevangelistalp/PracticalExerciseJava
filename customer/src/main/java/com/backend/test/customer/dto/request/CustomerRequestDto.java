@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class CustomerRequestDto {
     private Long personId;
     private String name;
-    private String genre;  //TODO enum
+    private String genre;
     private Integer age;
     private String address;
     private String phone;

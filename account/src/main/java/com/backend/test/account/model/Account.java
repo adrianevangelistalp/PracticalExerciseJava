@@ -8,12 +8,13 @@ import lombok.Data;
 @Table(name = "account")
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO,
+            generator="native")
     @Column(nullable = false)
     private Long id;
     @Column(nullable = false)
     private Long customerId;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String type;
     @Column(nullable = false)
     private Double balance;

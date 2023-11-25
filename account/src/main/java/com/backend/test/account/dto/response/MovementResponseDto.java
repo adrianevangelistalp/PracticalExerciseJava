@@ -10,6 +10,7 @@ public class MovementResponseDto {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date date;
     private String type;
-    private Double amount;
     private Double balance;
+    private Double amount;
+
 }

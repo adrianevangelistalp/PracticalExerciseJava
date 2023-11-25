@@ -20,7 +20,8 @@ public class ReportServiceImpl implements ReportService {
 
     private final ReportRepository reportRepository;
     private final ReportMapper reportMapper;
-    private final RabbitMQProducer rabbitMQProducer;
+    private final MessageQueueService messageQueueService;
+
 
     @Override
     public List<ReportResponseDto> findByCustomerId(Long id) {
@@ -36,6 +37,6 @@ public class ReportServiceImpl implements ReportService {
     public void getAccountsState(Long id, Date from, Date to) {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         AccountStateRequestMessage accountStateRequestMessage = new AccountStateRequestMessage(id,formatter.format(from),formatter.format(to));
-        rabbitMQProducer.send(accountStateRequestMessage);
+        messageQueueService.sendAccountStateRequest(accountStateRequestMessage);
     }
 }

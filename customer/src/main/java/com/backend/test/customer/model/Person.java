@@ -1,5 +1,6 @@
 package com.backend.test.customer.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -11,9 +12,11 @@ public class Person {
 
     private Long personId;
     private String name;
-    private String genre;  //TODO enum
+    @Column(length = 20)
+    private String genre;
     private Integer age;
     private String address;
+    @Column(length = 30)
     private String phone;
 
 }

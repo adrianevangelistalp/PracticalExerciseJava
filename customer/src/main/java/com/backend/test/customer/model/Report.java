@@ -10,7 +10,8 @@ import java.util.Date;
 @Table(name = "report")
 public class Report {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO,
+            generator="native")
     @Column(nullable = false)
     private Long id;
     private Long customerId;

@@ -10,9 +10,11 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class Customer extends Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO,
+            generator="native")
     @Column(nullable = false)
     private Long id;
+    @Column(length = 20)
     private String password;
     private Boolean state;
 }

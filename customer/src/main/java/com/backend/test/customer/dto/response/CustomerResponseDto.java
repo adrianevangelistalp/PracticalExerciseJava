@@ -7,7 +7,7 @@ public class CustomerResponseDto {
     private Long id;
     private Long personId;
     private String name;
-    private String genre;  //TODO enum
+    private String genre;
     private Integer age;
     private String address;
     private String phone;
