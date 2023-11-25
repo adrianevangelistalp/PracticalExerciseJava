@@ -11,6 +11,10 @@ java {
 	sourceCompatibility = '17'
 }
 
+ext {
+	karateVersion = '1.4.1'
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -33,6 +37,16 @@ dependencies {
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.amqp:spring-rabbit-test'
+	testImplementation "com.intuit.karate:karate-junit5:${karateVersion}"
+}
+
+sourceSets {
+	test {
+		resources {
+			srcDir file('src/test/java')
+			exclude '**/*.java'
+		}
+	}
 }
 
 tasks.named('bootBuildImage') {
@@ -41,4 +55,12 @@ tasks.named('bootBuildImage') {
 
 tasks.named('test') {
 	useJUnitPlatform()
+	systemProperty "karate.options", System.properties.getProperty("karate.options")
+	systemProperty "karate.env", System.properties.getProperty("karate.env")
+	outputs.upToDateWhen { false }
+}
+
+task karateDebug(type: JavaExec) {
+	classpath = sourceSets.test.runtimeClasspath
+	mainClass = 'com.intuit.karate.cli.Main'
 }

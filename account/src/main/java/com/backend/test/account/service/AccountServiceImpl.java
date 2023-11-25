@@ -70,8 +70,6 @@ public class AccountServiceImpl implements AccountService{
         if (account.getBalance() + accountMovementRequestDto.getAmount() < 0) {
             throw new InsufficientFundsException("Insufficient funds");
         }
-        account.setBalance(account.getBalance() + accountMovementRequestDto.getAmount());
-        accountRepository.save(account);
         MovementRequestDto newMovement = new MovementRequestDto();
         newMovement.setAccountId(id);
         newMovement.setAmount(accountMovementRequestDto.getAmount());
@@ -79,6 +77,10 @@ public class AccountServiceImpl implements AccountService{
         newMovement.setBalance(account.getBalance());
         newMovement.setDate(new Date());
         movementService.save(newMovement);
+
+        account.setBalance(account.getBalance() + accountMovementRequestDto.getAmount());
+        accountRepository.save(account);
+
         return accountMapper.toMovementResponseDto(account);
     }
 

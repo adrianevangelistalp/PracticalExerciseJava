@@ -10,7 +10,7 @@ Feature: account movement registration tests
             "customerId": 1,
             "type": "CA",
             "initialBalance": 120.00,
-            "state" : "active"
+            "state" : true
         }
       """
 
@@ -30,7 +30,7 @@ Feature: account movement registration tests
     And match response.customerId == 1
     And match response.type == "CA"
     And match response.balance == 140.00
-    And match response.state == "active"
+    And match response.state == true
 
   Scenario: negative movement registration
     * def account =
@@ -39,7 +39,7 @@ Feature: account movement registration tests
             "customerId": 1,
             "type": "CA",
             "initialBalance": 120.00,
-            "state" : "active"
+            "state" : true
         }
       """
 
@@ -59,7 +59,7 @@ Feature: account movement registration tests
     And match response.customerId == 1
     And match response.type == "CA"
     And match response.balance == 100.00
-    And match response.state == "active"
+    And match response.state == true
 
   Scenario: positive movement registration
     * def account =
@@ -68,7 +68,7 @@ Feature: account movement registration tests
             "customerId": 1,
             "type": "CA",
             "initialBalance": 120.00,
-            "state" : "active"
+            "state" : true
         }
       """
 
@@ -88,7 +88,7 @@ Feature: account movement registration tests
     And match response.customerId == 1
     And match response.type == "CA"
     And match response.balance == 140.00
-    And match response.state == "active"
+    And match response.state == true
 
   Scenario: negative movement registration with insufficient funds
     * def account =
@@ -97,7 +97,7 @@ Feature: account movement registration tests
             "customerId": 1,
             "type": "CA",
             "initialBalance": 120.00,
-            "state" : "active"
+            "state" : true
         }
       """
 

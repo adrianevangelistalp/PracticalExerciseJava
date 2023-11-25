@@ -14,7 +14,7 @@ Feature: customers CRUD tests
         "address" : "Otavalo sn y principal",
         "phone" : "1312",
         "password": "secret",
-        "state": "registered"
+        "state": true
       }
       """
 
@@ -39,7 +39,7 @@ Feature: customers CRUD tests
         "address" : "Otavalo sn y principal",
         "phone" : "1312",
         "password": "secret",
-        "state": "registered"
+        "state": true
       }
       """
 
@@ -58,7 +58,7 @@ Feature: customers CRUD tests
         "address" : "Otavalo sn y principal nada",
         "phone" : "13123",
         "password": "secret1",
-        "state": "none"
+        "state": false
       }
       """
 
@@ -83,7 +83,7 @@ Feature: customers CRUD tests
         "address" : "Otavalo sn y principal",
         "phone" : "1312",
         "password": "secret",
-        "state": "registered"
+        "state": true
       }
       """
 

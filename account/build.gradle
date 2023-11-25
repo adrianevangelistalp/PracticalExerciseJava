@@ -17,6 +17,10 @@ configurations {
 	}
 }
 
+ext {
+	karateVersion = '1.4.1'
+}
+
 repositories {
 	mavenCentral()
 }
@@ -37,12 +41,31 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
 	testImplementation "org.testcontainers:junit-jupiter"
 	testImplementation "org.testcontainers:mysql"
+	testImplementation "com.intuit.karate:karate-junit5:${karateVersion}"
 }
 
 tasks.named('bootBuildImage') {
 	builder = 'paketobuildpacks/builder-jammy-base:latest'
 }
 
+
+sourceSets {
+	test {
+		resources {
+			srcDir file('src/test/java')
+			exclude '**/*.java'
+		}
+	}
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
+	systemProperty "karate.options", System.properties.getProperty("karate.options")
+	systemProperty "karate.env", System.properties.getProperty("karate.env")
+	outputs.upToDateWhen { false }
+}
+
+task karateDebug(type: JavaExec) {
+	classpath = sourceSets.test.runtimeClasspath
+	mainClass = 'com.intuit.karate.cli.Main'
 }

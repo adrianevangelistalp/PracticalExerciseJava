@@ -8,7 +8,7 @@ Feature: movements CRUD tests
             "customerId": 1,
             "type": "CA",
             "initialBalance": 120.00,
-            "state" : "active"
+            "state" : true
         }
       """
     Given path 'accounts'

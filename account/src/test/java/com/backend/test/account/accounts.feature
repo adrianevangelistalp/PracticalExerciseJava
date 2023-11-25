@@ -10,7 +10,7 @@ Feature: account CRUD tests
             "customerId": 1,
             "type": "CA",
             "initialBalance": 120.00,
-            "state" : "active"
+            "state" : true
         }
       """
 
@@ -25,7 +25,7 @@ Feature: account CRUD tests
     And match response.customerId == 1
     And match response.type == "CA"
     And match response.balance == 120.00
-    And match response.state == "active"
+    And match response.state == true
 
   Scenario: save an account and then update it
     * def account =
@@ -34,7 +34,7 @@ Feature: account CRUD tests
             "customerId": 1,
             "type": "CA",
             "initialBalance": 20.00,
-            "state" : "active"
+            "state" : true
         }
       """
 
@@ -48,7 +48,7 @@ Feature: account CRUD tests
         {
             "customerId": 1,
             "type": "CC",
-            "state" : "inactive"
+            "state" : false
         }
       """
 
@@ -62,7 +62,7 @@ Feature: account CRUD tests
     Then status 200
     And match response.customerId == 1
     And match response.type == "CC"
-    And match response.state == "inactive"
+    And match response.state == false
 
 
   Scenario: save an account and then delete it
@@ -72,7 +72,7 @@ Feature: account CRUD tests
             "customerId": 1,
             "type": "CA",
             "initialBalance": 4420.00,
-            "state" : "active"
+            "state" : true
         }
       """
 

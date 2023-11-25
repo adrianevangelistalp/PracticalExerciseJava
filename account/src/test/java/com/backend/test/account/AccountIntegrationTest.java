@@ -67,7 +67,8 @@ class AccountIntegrationTest {
 						.contentType(MediaType.APPLICATION_JSON).content(""))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$").isArray())
-				.andExpect(jsonPath("$[-1].balance", is(1100.0)));
+				.andExpect(jsonPath("$[-1].amount", is(100.0)))
+				.andExpect(jsonPath("$[-1].balance", is(1000.0)));
 
 	}
 
@@ -101,7 +102,8 @@ class AccountIntegrationTest {
 						.contentType(MediaType.APPLICATION_JSON).content(""))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$").isArray())
-				.andExpect(jsonPath("$[-1].balance", is(900.0)));
+				.andExpect(jsonPath("$[-1].amount", is(-100.0)))
+				.andExpect(jsonPath("$[-1].balance", is(1000.0)));
 
 	}
 
@@ -181,9 +183,12 @@ class AccountIntegrationTest {
 						.contentType(MediaType.APPLICATION_JSON).content(""))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$").isArray())
-				.andExpect(jsonPath("$[-3].balance", is(900.0)))
-				.andExpect(jsonPath("$[-2].balance", is(1000.0)))
-				.andExpect(jsonPath("$[-1].balance", is(0.0)));
+				.andExpect(jsonPath("$[-3].amount", is(-100.0)))
+				.andExpect(jsonPath("$[-3].balance", is(1000.0)))
+				.andExpect(jsonPath("$[-2].amount", is(100.0)))
+				.andExpect(jsonPath("$[-2].balance", is(900.0)))
+				.andExpect(jsonPath("$[-1].amount", is(-1000.0)))
+				.andExpect(jsonPath("$[-1].balance", is(1000.0)));
 	}
 
 }
