@@ -15,6 +15,6 @@ public class CustomerRequestDto {
     private String address;
     private String phone;
     private String password;
-    private String state;
+    private Boolean state;
 
 }

@@ -34,7 +34,6 @@ class CustomerServiceTest {
     @Test
     void givenCustomerId_whenFindById_thenReturnOK() {
 
-        CustomerRequestDto customerRequestDto = new CustomerRequestDto(1L,"Juan Osorio","M", 25, "Calle 123", "123456789", "123456", "A");
         Customer customer = getCustomer();
 
         when(customerRepository.findById(CUSTOMER_ID)).thenReturn(java.util.Optional.of(customer));
@@ -56,9 +55,6 @@ class CustomerServiceTest {
     @Test
     void givenNonexistentCustomerId_whenFindById_thenThrowException() {
 
-        CustomerRequestDto customerRequestDto = new CustomerRequestDto(1L,"Juan Osorio","M", 25, "Calle 123", "123456789", "123456", "A");
-        Customer customer = getCustomer();
-
         when(customerRepository.findById(CUSTOMER_ID)).thenThrow(new CustomerNotFoundException("Customer not found"));
 
         assertThrows(CustomerNotFoundException.class, () -> customerService.findById(CUSTOMER_ID));
@@ -68,7 +64,7 @@ class CustomerServiceTest {
     @Test
     void givenCustomer_whenSave_thenReturnOK() {
 
-        CustomerRequestDto customerRequestDto = new CustomerRequestDto(1L,"Juan Osorio","M", 25, "Calle 123", "123456789", "123456", "A");
+        CustomerRequestDto customerRequestDto = new CustomerRequestDto(1L,"Juan Osorio","M", 25, "Calle 123", "123456789", "123456", true);
         Customer customer = getCustomer();
 
         when(customerRepository.save(any())).thenReturn(customer);
@@ -91,7 +87,7 @@ class CustomerServiceTest {
     @Test
     void givenCustomer_whenUpdate_thenReturnOK() {
 
-        CustomerRequestDto customerRequestDto = new CustomerRequestDto(1L,"Juan Osorio Changed","S", 35, "Calle 123 Changed", "1234567893", "1234563", "B");
+        CustomerRequestDto customerRequestDto = new CustomerRequestDto(1L,"Juan Osorio Changed","S", 35, "Calle 123 Changed", "1234567893", "1234563", true);
         Customer updatedCustomer = getUpdatedCustomer();
 
         when(customerRepository.findById(CUSTOMER_ID)).thenReturn(java.util.Optional.of(getCustomer()));
@@ -117,7 +113,7 @@ class CustomerServiceTest {
     @Test
     void givenNonexistentCustomer_whenUpdate_thenThrowException() {
 
-        CustomerRequestDto customerRequestDto = new CustomerRequestDto(1L,"Juan Osorio Changed","S", 35, "Calle 123 Changed", "1234567893", "1234563", "B");
+        CustomerRequestDto customerRequestDto = new CustomerRequestDto(1L,"Juan Osorio Changed","S", 35, "Calle 123 Changed", "1234567893", "1234563", true);
 
         when(customerRepository.findById(CUSTOMER_ID)).thenThrow(new CustomerNotFoundException("Customer not found"));
 
@@ -156,7 +152,7 @@ class CustomerServiceTest {
         customer.setAddress("Calle 123");
         customer.setPhone("123456789");
         customer.setPassword("123456");
-        customer.setState("A");
+        customer.setState(true);
         return customer;
     }
 
@@ -170,7 +166,7 @@ class CustomerServiceTest {
         customer.setAddress("Calle 123 Changed");
         customer.setPhone("1234567893");
         customer.setPassword("1234563");
-        customer.setState("B");
+        customer.setState(true);
         return customer;
     }
 }

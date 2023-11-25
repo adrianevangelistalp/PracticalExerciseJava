@@ -13,6 +13,6 @@ public class CustomerResponseDto {
     private String phone;
 
     private String password;
-    private String state;
+    private Boolean state;
 
 }

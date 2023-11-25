@@ -33,7 +33,7 @@ public class AccountController {
 
     @PostMapping
     public ResponseEntity<AccountResponseDto> save(@RequestBody AccountRequestDto accountRequestDto) {
-        return new ResponseEntity(accountService.save(accountRequestDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(accountService.save(accountRequestDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

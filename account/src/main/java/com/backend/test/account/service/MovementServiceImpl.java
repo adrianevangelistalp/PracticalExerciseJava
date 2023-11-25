@@ -54,7 +54,7 @@ public class MovementServiceImpl implements MovementService {
     @Transactional
     public MovementCompleteResponseDto update(Long id, MovementRequestDto movement) {
         Movement movementToUpdate = getMovementById(id);
-        Account account = getAccount(movement);
+        getAccount(movement);
         movementToUpdate.setType(movement.getType());
         movementToUpdate.setAmount(movement.getAmount());
         movementToUpdate.setBalance(movement.getBalance());

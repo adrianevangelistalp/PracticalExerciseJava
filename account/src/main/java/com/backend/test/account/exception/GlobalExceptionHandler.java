@@ -22,19 +22,19 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(AccountNotFoundException.class)
     public ResponseEntity<ErrorMessage> validationException (AccountNotFoundException ex, WebRequest request) {
         ErrorMessage message = buildError(ex, request);
-        return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MovementNotFoundException.class)
     public ResponseEntity<ErrorMessage> validationException (MovementNotFoundException ex, WebRequest request) {
         ErrorMessage message = buildError(ex, request);
-        return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(InsufficientFundsException.class)
     public ResponseEntity<ErrorMessage> validationException (InsufficientFundsException ex, WebRequest request) {
         ErrorMessage message = buildError(ex, request);
-        return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 
 
@@ -42,8 +42,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorMessage> handleGlobalException(Exception exception,
                                                               WebRequest webRequest){
-        ErrorMessage ErrorMessage = buildError(exception, webRequest);
-        return new ResponseEntity<>(ErrorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        ErrorMessage errorMessage = buildError(exception, webRequest);
+        return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     private static ErrorMessage buildError(Exception exception, WebRequest webRequest) {
@@ -57,7 +57,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   HttpStatusCode status,
                                                                   WebRequest request) {
         Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) ->{
+        ex.getBindingResult().getAllErrors().forEach(error ->{
             String fieldName = ((FieldError)error).getField();
             String message = error.getDefaultMessage();
             errors.put(fieldName, message);

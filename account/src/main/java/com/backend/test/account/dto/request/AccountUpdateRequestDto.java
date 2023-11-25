@@ -7,5 +7,5 @@ public class AccountUpdateRequestDto {
     private Long customerId;
     private String number;
     private String type;
-    private String state;
+    private Boolean state;
 }

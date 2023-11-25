@@ -3,8 +3,6 @@ package com.backend.test.account.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 @Entity
 @Table(name = "account")
@@ -20,6 +18,6 @@ public class Account {
     @Column(nullable = false)
     private Double balance;
     @Column(nullable = false)
-    private String state;
+    private Boolean state;
 
 }

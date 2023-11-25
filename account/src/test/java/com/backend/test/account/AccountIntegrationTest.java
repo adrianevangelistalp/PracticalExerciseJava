@@ -44,7 +44,7 @@ class AccountIntegrationTest {
 		 account.setCustomerId(1L);
 		 account.setType("SAVINGS");
 		 account.setBalance(1000.0);
-		 account.setState("ACTIVE");
+		 account.setState(true);
 		 Account newAccount = accountRepository.save(account);
 
 		// When
@@ -78,7 +78,7 @@ class AccountIntegrationTest {
 		account.setCustomerId(1L);
 		account.setType("SAVINGS");
 		account.setBalance(1000.0);
-		account.setState("ACTIVE");
+		account.setState(true);
 		Account newAccount = accountRepository.save(account);
 
 		// When
@@ -112,7 +112,7 @@ class AccountIntegrationTest {
 		account.setCustomerId(1L);
 		account.setType("SAVINGS");
 		account.setBalance(100.0);
-		account.setState("ACTIVE");
+		account.setState(true);
 		Account newAccount = accountRepository.save(account);
 
 		// When
@@ -140,7 +140,7 @@ class AccountIntegrationTest {
 		account.setCustomerId(1L);
 		account.setType("SAVINGS");
 		account.setBalance(1000.0);
-		account.setState("ACTIVE");
+		account.setState(true);
 		Account newAccount = accountRepository.save(account);
 
 		// When

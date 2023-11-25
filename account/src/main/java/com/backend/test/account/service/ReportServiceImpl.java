@@ -1,13 +1,9 @@
 package com.backend.test.account.service;
 
 import com.backend.test.account.dto.response.AccountStateReportDTO;
-import com.backend.test.account.model.Movement;
 import com.backend.test.account.model.Report;
-import com.backend.test.account.repository.AccountRepository;
-import com.backend.test.account.repository.MovementRepository;
 import com.backend.test.account.repository.ReportRepository;
 import com.backend.test.account.service.mapping.AccountMapper;
-import com.backend.test.account.service.mapping.MovementMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;

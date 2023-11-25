@@ -5,7 +5,7 @@ import com.intuit.karate.junit5.Karate;
 class MovementsRunner {
     
     @Karate.Test
-    Karate testAccounts() {
+    Karate testMovements() {
         return Karate.run("movements").relativeTo(getClass());
     }    
 

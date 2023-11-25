@@ -8,5 +8,5 @@ public class AccountResponseDto {
     private Long customerId;
     private String type;
     private Double balance;
-    private String state;
+    private Boolean state;
 }

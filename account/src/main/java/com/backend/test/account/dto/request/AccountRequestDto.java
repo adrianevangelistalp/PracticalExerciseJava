@@ -7,5 +7,5 @@ public class AccountRequestDto {
     private Long customerId;
     private String type;
     private Double initialBalance;
-    private String state;
+    private Boolean state;
 }

@@ -1,6 +1,5 @@
 package com.backend.test.account.dto.response;
 
-import jakarta.persistence.Column;
 import lombok.Data;
 
 import java.util.List;
@@ -12,7 +11,7 @@ public class AccountStateReportDTO {
     private String number;
     private String type;
     private Double balance;
-    private String state;
+    private Boolean state;
 
     private List<MovementResponseDto> transactions;
 }

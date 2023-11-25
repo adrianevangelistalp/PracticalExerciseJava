@@ -2,7 +2,6 @@ package com.backend.test.account.controller;
 
 import com.backend.test.account.dto.request.MovementRequestDto;
 import com.backend.test.account.dto.response.MovementCompleteResponseDto;
-import com.backend.test.account.dto.response.MovementResponseDto;
 import com.backend.test.account.service.MovementService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -31,7 +30,7 @@ public class MovementController {
 
     @PostMapping
     public ResponseEntity<MovementCompleteResponseDto> save(@RequestBody MovementRequestDto movementRequestDto) {
-        return new ResponseEntity(movementService.save(movementRequestDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(movementService.save(movementRequestDto), HttpStatus.CREATED);
 
     }
 

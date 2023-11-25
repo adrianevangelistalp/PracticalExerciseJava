@@ -14,5 +14,5 @@ public class Customer extends Person {
     @Column(nullable = false)
     private Long id;
     private String password;
-    private String state;
+    private Boolean state;
 }

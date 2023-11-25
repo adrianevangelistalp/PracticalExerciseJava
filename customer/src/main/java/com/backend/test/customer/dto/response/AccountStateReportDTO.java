@@ -17,7 +17,7 @@ public class AccountStateReportDTO {
     private String number;
     private String type;
     private Double balance;
-    private String state;
+    private Boolean state;
 
     private List<MovementResponseDto> transactions;
 }
