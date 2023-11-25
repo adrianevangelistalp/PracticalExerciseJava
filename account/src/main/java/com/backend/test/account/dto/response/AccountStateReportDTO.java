@@ -8,7 +8,6 @@ import java.util.List;
 public class AccountStateReportDTO {
     private Long id;
     private Long customerId;
-    private String number;
     private String type;
     private Double balance;
     private Boolean state;
