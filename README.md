@@ -1,6 +1,6 @@
 # Prueba Técnica/Práctica
 
-# Arquitectura Microservicio
+# Arquitectura Microservicios
 
 ## Autor: **Adrian Evangelista**
 
